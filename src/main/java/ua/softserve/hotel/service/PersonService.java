@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ua.softserve.hotel.dao.PersonDAO;
+import ua.softserve.hotel.dao.IPersonDAO;
 import ua.softserve.hotel.domain.Person;
 
 /**
@@ -16,31 +16,31 @@ import ua.softserve.hotel.domain.Person;
 public class PersonService implements IPersonService {
 
     @Autowired
-    private PersonDAO personDAO;
+    private IPersonDAO ipersonDAO;
 
     @Transactional
     public void addPerson(Person person) {
-        
-        personDAO.addPerson(person);
+
+        ipersonDAO.addPerson(person);
     }
 
     @Transactional
     public void updatePerson(Person person) {
-        personDAO.updatePerson(person);
+        ipersonDAO.updatePerson(person);
     }
 
     @Transactional
     public void removePerson(Integer id) {
-        personDAO.removePerson(id);
+        ipersonDAO.removePerson(id);
     }
 
     @Transactional
     public Person getPerson(Integer id) {
-        return personDAO.getPerson(id);
+        return ipersonDAO.getPerson(id);
     }
 
     @Transactional
     public List<Person> getAllPersons() {
-        return personDAO.getAllPersons();
+        return ipersonDAO.getAllPersons();
     }
 }
