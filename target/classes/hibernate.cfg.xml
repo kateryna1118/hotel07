@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<mapping class="ua.softserve.hotel.domain.AddService" />
+		<mapping class="ua.softserve.hotel.domain.AddServiceHistory" />
+		<mapping class="ua.softserve.hotel.domain.HotelOrder" />
+		<mapping class="ua.softserve.hotel.domain.Person" />
+		<mapping class="ua.softserve.hotel.domain.Role" />
+		<mapping class="ua.softserve.hotel.domain.Room" />
+		<mapping class="ua.softserve.hotel.domain.RoomType" />
+		<mapping class="ua.softserve.hotel.domain.User" />
+	</session-factory>
+</hibernate-configuration>
