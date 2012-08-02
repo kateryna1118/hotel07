@@ -16,34 +16,48 @@
         </a>
 
         <h2><spring:message code="label.title" /></h2>
-        <form:form method="post" action="./person/add" commandName="person">
+        <form:form method="post" action="./registration/add" commandName="user">
 
             <table>
                 <tr>
-                    <td><form:label path="fName">
+                    <td><form:label path="username">
+                            <spring:message code="label.username" />
+                        </form:label></td>
+                    <td><form:input path="username" /></td>
+                </tr>
+                <tr>
+                    <td><form:label path="password">
+                            <spring:message code="label.password" />
+                        </form:label></td>
+                    <td><form:input path="password" /></td>
+                </tr>
+
+
+                <tr>
+                    <td><form:label path="person.fName">
                             <spring:message code="label.fName" />
                         </form:label></td>
-                    <td><form:input path="fName" /></td>
+                    <td><form:input path="person.fName" /></td>
                 </tr>
                 <tr>
-                    <td><form:label path="lName">
+                    <td><form:label path="person.lName">
                             <spring:message code="label.lName" />
                         </form:label></td>
-                    <td><form:input path="lName" /></td>
+                    <td><form:input path="person.lName" /></td>
                 </tr>
 
 
                 <tr>
-                    <td><form:label path="email">
+                    <td><form:label path="person.email">
                             <spring:message code="label.email" />
                         </form:label></td>
-                    <td><form:input path="email" /></td>
+                    <td><form:input path="person.email" /></td>
                 </tr>
                 <tr>
-                    <td><form:label path="phone">
+                    <td><form:label path="person.phone">
                             <spring:message code="label.phone" />
                         </form:label></td>
-                    <td><form:input path="phone" /></td>
+                    <td><form:input path="person.phone" /></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit"
@@ -53,20 +67,24 @@
         </form:form>
 
         <h3><spring:message code="label.persons" /></h3>
-        <c:if test="${!empty getAllPersons}">
+        <c:if test="${!empty getAllUsers}">
             <table class="db">
                 <tr>
                     <th><spring:message code="label.fName" /></th>
                     <th><spring:message code="label.email" /></th>
                     <th><spring:message code="label.phone" /></th>
+                    <th><spring:message code="label.username" /></th>
+                    <th><spring:message code="label.password" /></th>
                     <th>&nbsp;</th>
                 </tr>
-                <c:forEach items="${getAllPersons}" var="person">
+                <c:forEach items="${getAllUsers}" var="user">
                     <tr>
-                        <td>${person.lName}, ${person.fName}</td>
-                        <td>${person.email}</td>
-                        <td>${person.phone}</td>
-                        <td><a href="delete/${person.id}"><spring:message code="label.delete" /></a></td>
+                        <td>${user.person.lName}, ${user.person.fName}</td>
+                        <td>${user.person.email}</td>
+                        <td>${user.person.phone}</td>
+                        <td>${user.username}</td>
+                        <td>${user.password}</td>
+                        <td><a href="./delete/${user.id}"><spring:message code="label.delete" /></a></td>
                     </tr>
                 </c:forEach>
             </table>

@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="ORDERS")
-public class HotelOrder implements Serializable{
+public class HotelOrder{
     @Id
     @Column(name = "ORDER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,8 @@ public class HotelOrder implements Serializable{
 
     //��� ����� ��������� ������ ���������� ����� ��� ���������
     //����� ������������� �� ������ roomState � Room
-    @Column(nullable = true, name = "NUMBER")
+    @Column( name = "NUMBER")
+    //nullable = true,
     private int number;
 
     //���� �������� ���������
@@ -52,8 +53,8 @@ public class HotelOrder implements Serializable{
      //������ ������ - �����+����� �� AddServiceHistory
     //� AddServiceHistory ����� ����� � ���-�� ���� � �� ����
     //���� � �����
-    @Column(name = "BALANCE")
-    private double balance;
+//    @Column(name = "BALANCE")
+//    private double balance;
 
     public Date getDateIn() {
         return DateIn;
@@ -79,13 +80,13 @@ public class HotelOrder implements Serializable{
         this.addServiceHistory = addServiceHistory;
     }
 
-    public double getBalans() {
-        return balance;
-    }
-
-    public void setBalans(double balans) {
-        this.balance = balans;
-    }
+//    public double getBalans() {
+//        return balance;
+//    }
+//
+//    public void setBalans(double balans) {
+//        this.balance = balans;
+//    }
 
     public Long getId() {
         return id;

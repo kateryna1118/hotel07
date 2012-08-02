@@ -11,7 +11,8 @@ public class Person {
     @GeneratedValue
     private Integer id;
 
-    @Column(nullable = false, name = "F_NAME")
+    @Column( name = "F_NAME")
+    //nullable = false,
     private String fName;
 
     @Column(name = "L_NAME")

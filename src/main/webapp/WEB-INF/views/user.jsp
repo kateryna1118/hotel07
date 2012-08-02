@@ -14,39 +14,62 @@
         <a href="<c:url value="/logout" />">
             <spring:message code="label.logout" />
         </a>
+        <c:if test="${not empty param.error}">
+            <font color="red"> <spring:message code="label.loginerror" />
+                : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
+            </c:if>
 
-        <h2><spring:message code="label.title" /></h2>
-        <form:form method="post" action="user_add" commandName="user">
 
+
+        <form method="POST" action="<c:url value="/j_spring_security_check" />">
             <table>
                 <tr>
-                    <td>
-                        <form:label path="login">
-                            <spring:message code="label.login" />
-                        </form:label></td>
-                    <td><form:input path="login" /></td>
+                    <td align="right"><spring:message code="label.username" /></td>
+                    <td><input type="text" name="j_username" /></td>
                 </tr>
                 <tr>
-                    <td><form:label path="password">
-                            <spring:message code="label.password" />
-                        </form:label></td>
-                    <td><form:input path="password" /></td>
+                    <td align="right"><spring:message code="label.password" /></td>
+                    <td><input type="password" name="j_password" /></td>
                 </tr>
-
-
                 <tr>
-                    <td colspan="2"><input type="submit"
-                                           value="<spring:message code="label.signin"/>" /></td>
+                    <td align="right"><spring:message code="label.remember" /></td>
+                    <td><input type="checkbox" name="_spring_security_remember_me" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right"><input type="submit" value="Login" />
+                        <input type="reset" value="Reset" /></td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <a href="./person" ><spring:message code="label.register"/></a></td>
+                        <a href="./registration" ><spring:message code="label.register"/></a></td>
 
                 </tr>
-            </table>
-        </form:form>
+                <tr>
+                    <td colspan="2">
+                        <a href="./booking" ><spring:message code="label.billing"/></a></td>
 
-        <h3><spring:message code="label.users" /></h3>
+                </tr>
+
+            </table>
+        </form>
+
+
+
+
+        <c:if test="${!empty getAllPersons}">
+            <h3>Добро пожаловать!</h3>
+
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <a href="./booking" ><spring:message code="label.billing"/>" </a></td>
+                </tr>
+
+            </table>
+
+
+        </c:if>
+
 
 
     </body>

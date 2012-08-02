@@ -50,11 +50,11 @@ public class UserDAO implements IUserDAO {
 		return toReturn;
 	}
 
-//	@SuppressWarnings("unchecked")
-//
-//	public List<User> getAllUsers() {
-//		List<User> users = sessionFactory.getCurrentSession().
-//				createQuery("from Users").list();
-//		return users;
-//	}
+	@SuppressWarnings("unchecked")
+
+	public List<User> getAllUsers() {
+		List<User> users = sessionFactory.getCurrentSession().
+				createQuery("from User").list();
+		return users;
+	}
 }

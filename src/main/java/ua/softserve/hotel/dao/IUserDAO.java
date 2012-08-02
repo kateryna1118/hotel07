@@ -11,5 +11,5 @@ public interface IUserDAO {
 	public void updateUser(User user);
 	public void removeUser(Long id);
 	public User getUser(Long id);
-//	public List<User> getAllUsers();
+	public List<User> getAllUsers();
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ROOM_TYPE")
-public class RoomType implements Serializable {
+public class RoomType  {
 
     @Id
     @Column(name = "ROOM_TYPE_ID")

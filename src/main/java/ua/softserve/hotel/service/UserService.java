@@ -19,7 +19,25 @@ public class UserService implements IUserService {
 
     @Autowired
     private IUserDAO iuserDAO;
+
+    @Autowired
     private IRoleService IRoleService;
+
+    public ua.softserve.hotel.service.IRoleService getIRoleService() {
+        return IRoleService;
+    }
+
+    public void setIRoleService(ua.softserve.hotel.service.IRoleService IRoleService) {
+        this.IRoleService = IRoleService;
+    }
+
+    public IUserDAO getIuserDAO() {
+        return iuserDAO;
+    }
+
+    public void setIuserDAO(IUserDAO iuserDAO) {
+        this.iuserDAO = iuserDAO;
+    }
 
     /*Перед исполнением метода помеченного @Transactional аннотацией начинается
     транзакция, после выполнения метода транзакция коммитится, при выбрасывании
@@ -29,6 +47,7 @@ public class UserService implements IUserService {
     public void addUser(User user) {
        // user.setRole(user.getRole().);
         user.setRole(IRoleService.getRole(1L));
+        user.setEnabled(Boolean.TRUE);
         iuserDAO.addUser(user);
     }
 
@@ -47,9 +66,9 @@ public class UserService implements IUserService {
         return iuserDAO.getUser(id);
     }
 
-//    @Transactional
-//    public List<User> getAllUsers() {
-//        return userDAO.getAllUsers();
-//    }
+    @Transactional
+    public List<User> getAllUsers() {
+        return iuserDAO.getAllUsers();
+    }
 
 }

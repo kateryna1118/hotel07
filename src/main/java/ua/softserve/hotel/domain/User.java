@@ -2,6 +2,7 @@ package ua.softserve.hotel.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 /**
  *
  * @author Kateryna
@@ -14,24 +15,19 @@ public class User implements Serializable {
     @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, name = "LOGIN")
-    private String login;
-
+    @Column(nullable = false, name = "USERNAME")
+    private String username;
+    @Column(nullable = false, name = "ENABLED")
+    private Boolean enabled;
 //    @Column
     @ManyToOne
-    @JoinColumn(name = "NAME")
+    @JoinColumn(name = "ROLE_ID")
     private Role role;
-
-  @Column(nullable = false, name="PASSWORD")
+    @Column(nullable = false, name = "PASSWORD")
     private String password;
-
-  @Column(name="POST")
-  private String post;
-
-  @OneToOne(optional=false, cascade=CascadeType.ALL)
-  @JoinColumn(name="PERSON_ID")
-  private Person person;
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "PERSON_ID")
+    private Person person;
 
     public Person getPerson() {
         return person;
@@ -49,21 +45,12 @@ public class User implements Serializable {
         this.role = role;
     }
 
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getPassword() {
@@ -74,13 +61,19 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPost() {
-        return post;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setPost(String post) {
-        this.post = post;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

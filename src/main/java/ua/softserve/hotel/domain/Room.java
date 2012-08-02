@@ -14,7 +14,8 @@ public class Room implements Serializable {
     private Long id;
 
 
-    @Column(nullable = false, name = "NUMBER")
+    @Column( name = "NUMBER")
+    //nullable = false,
     private int number;
 
     @ManyToOne

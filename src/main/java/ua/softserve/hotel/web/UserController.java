@@ -1,5 +1,6 @@
 package ua.softserve.hotel.web;
 
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +22,21 @@ public class UserController {
     @Autowired
     private IUserService iuserService;
 
+    public IUserService getIuserService() {
+        return iuserService;
+    }
+
+    public void setIuserService(IUserService iuserService) {
+        this.iuserService = iuserService;
+    }
+
     @RequestMapping("/")
     public String home() {
         return "redirect:/user";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String createRegisterForm(Map<String, Object> model){
+    public String createRegisterForm(Map<String, Object> model) {
         model.put("user", new User());
         return "/user";
     }
@@ -58,20 +67,23 @@ public class UserController {
         return "redirect:/user";
     }
 
-    @RequestMapping("/user_get/{userId}")
-    public String getUser(@PathVariable("userId") Long userId) {
-
-        iuserService.getUser(userId);
-
-        return "redirect:/user";
+    @RequestMapping("/user_get")
+    public User getUser( Long userId) {
+        List<User> users = (List<User>) iuserService.getAllUsers();
+        for (User User : users) {
+            if (User.getId() == userId) {
+                return User;
+            }
+        }
+        return null;
     }
 
-//    @RequestMapping("/user")
-//    public String getAllUsers(Map<String, Object> map) {
-//
-//        map.put("user", new User());
-////        map.put("getAllUsers", iuserService.getAllUsers());
-//
-//        return "user";
-//    }
+    @RequestMapping("/user")
+    public String getAllUsers(Map<String, Object> map) {
+
+        map.put("user", new User());
+        map.put("getAllUsers", iuserService.getAllUsers());
+
+        return "user";
+    }
 }
