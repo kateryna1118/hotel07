@@ -12,7 +12,6 @@
     </context-param>
 
 	<!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->
-<<<<<<< HEAD
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -25,7 +24,7 @@
 	<listener>
 		<listener-class>
 			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
-                </listener-class>
+        </listener-class>
 	</listener>
 
 	<!-- Базовый сервлет, обрабатывает все запросы к приложению -->
@@ -55,31 +54,6 @@
 		<servlet-name>resteasy-servlet</servlet-name>
 		<url-pattern>/api</url-pattern>
 	</servlet-mapping>
-=======
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
-
-	<!-- Базовый сервлет, обрабатывает все запросы к приложению -->
-    <servlet>
-        <servlet-name>appServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>appServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
->>>>>>> origin/master
 
 	<!-- Фильтр для перекодировки в utf8 -->
     <filter>
