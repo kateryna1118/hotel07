@@ -12,20 +12,58 @@
     </context-param>
 
 	<!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->
-	<listener>
+	<!-- Commented because of concurrent with RESTEasy's listener  -->
+	<!-- listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	</listener-->
 	
-	<context-param>
+	<!-- Jersey -->
+	<!-- servlet>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-class>
+			com.sun.jersey.spi.spring.container.servlet.SpringServlet
+		</servlet-class>
+		<init-param>
+			<param-name>
+                com.sun.jersey.config.property.packages
+            </param-name>
+			<param-value>ua.softserve.hotel.api</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping-->
+	
+	<!-- JBoss RESTEasy -->
+	<!-- context-param>
 		<param-name>resteasy.resources</param-name>
 		<param-value>ua.softserve.hotel.api.Rest</param-value>
-	</context-param>
+	</context-param-->
  
 	<listener>
 		<listener-class>
 			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
         </listener-class>
 	</listener>
+	
+	<listener>
+      <listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
+   </listener>
+	
+	<servlet>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<url-pattern>/api</url-pattern>
+	</servlet-mapping>
 
 	<!-- Базовый сервлет, обрабатывает все запросы к приложению -->
 	<servlet>
@@ -41,18 +79,6 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>resteasy-servlet</servlet-name>
-		<servlet-class>
-			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-                </servlet-class>
-	</servlet>
- 
-	<servlet-mapping>
-		<servlet-name>resteasy-servlet</servlet-name>
-		<url-pattern>/api</url-pattern>
 	</servlet-mapping>
 
 	<!-- Фильтр для перекодировки в utf8 -->
@@ -81,6 +107,5 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
 
 </web-app>

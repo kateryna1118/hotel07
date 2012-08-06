@@ -76,4 +76,11 @@ public class User implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", enabled="
+				+ enabled + ", role=" + role + ", password=" + password
+				+ ", person=" + person + "]";
+	}
 }

@@ -17,9 +17,6 @@
 	
 	<!-- Включаем опцию использования конфигурационных аннотаций (@Annotation-based configuration)-->
 	<context:annotation-config />
-	
-	<bean id="customerBo" class="ua.softserve.hotel.api.CustomerBoImpl">
-    </bean>
 
 	<!-- Определяем папки, в которых будем автоматически искать бины-компоненты (@Component, @Service, @Entity)  -->
 	<context:component-scan base-package="ua.softserve.hotel" />
