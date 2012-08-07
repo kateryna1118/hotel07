@@ -1,10 +1,11 @@
 package ua.softserve.hotel.domain;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "PERSON")
-public class Person {
+public class Person implements Serializable {
 
     @Id
     @Column(name = "PERSON_ID")

@@ -6,6 +6,7 @@ package ua.softserve.hotel.dao;
 
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ua.softserve.hotel.domain.User;
@@ -49,6 +50,11 @@ public class UserDAO implements IUserDAO {
 				get(User.class, id);
 		return toReturn;
 	}
+
+        public User getUserByUserName(String userName){
+            User toReturn = (User) sessionFactory.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("username", userName)).uniqueResult();
+		return toReturn;
+        }
 
 	@SuppressWarnings("unchecked")
 

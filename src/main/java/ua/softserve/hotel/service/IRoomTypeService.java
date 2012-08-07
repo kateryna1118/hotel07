@@ -19,4 +19,6 @@ public interface IRoomTypeService {
 
     public List<RoomType> getAllRoomTypes();
 
+    public Object getAllRoomTypesNames();
+
 }

@@ -2,6 +2,7 @@ package ua.softserve.hotel.web;
 
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -36,7 +37,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String createRegisterForm(Map<String, Object> model) {
+    public String createRegisterForm(Map<String, Object> model, HttpSession session) {
+        session.setAttribute("userName", iuserService.getUserNameFromSecurity());
         model.put("user", new User());
         return "/user";
     }

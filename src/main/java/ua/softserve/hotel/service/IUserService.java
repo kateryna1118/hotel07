@@ -21,5 +21,9 @@ public interface IUserService {
 
     public User getUser(Long id);
 
+    public User getUserByUserName(String userName);
+
     public List<User> getAllUsers();
+
+    public String getUserNameFromSecurity();
 }

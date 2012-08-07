@@ -19,5 +19,6 @@ public interface IOrderService {
     public HotelOrder getOrder(Long id);
 
     public List<HotelOrder> getAllOrders();
+
 }
 

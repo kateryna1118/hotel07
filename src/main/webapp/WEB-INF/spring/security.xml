@@ -17,11 +17,16 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
         <intercept-url pattern="/delete_user/*" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/booking*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN" />
 
+<intercept-url pattern="/hotelmanager*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN" />
+        <intercept-url pattern="/allusers*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN" />
+        <intercept-url pattern="/allorders*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN" />
+        <intercept-url pattern="/admin*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN" />
+
 
 
         <form-login login-page="/" default-target-url="/booking"
                             authentication-failure-url="/user?error=true" />
-        <logout logout-url="/logout" invalidate-session="true" logout-success-url="/user" />
+                        <logout logout-url="/logout" invalidate-session="true" logout-success-url="/user" />
 
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
         <remember-me />

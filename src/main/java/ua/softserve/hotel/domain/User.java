@@ -15,16 +15,21 @@ public class User implements Serializable {
     @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false, name = "USERNAME")
     private String username;
+
     @Column(nullable = false, name = "ENABLED")
     private Boolean enabled;
 //    @Column
+
     @ManyToOne
     @JoinColumn(name = "ROLE_ID")
     private Role role;
+
     @Column(nullable = false, name = "PASSWORD")
     private String password;
+
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "PERSON_ID")
     private Person person;
@@ -76,11 +81,4 @@ public class User implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", enabled="
-				+ enabled + ", role=" + role + ", password=" + password
-				+ ", person=" + person + "]";
-	}
 }

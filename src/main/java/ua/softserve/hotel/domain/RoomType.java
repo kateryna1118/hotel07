@@ -22,10 +22,10 @@ public class RoomType  {
     @Column(name = "NUMBER_OF_PLACES")
     private int numberOfPlaces;
 
-//���������� ������
+//?????????? ??????
     @Column(name = "NUMBER_OF_ROOMS")
     private int numberOfRooms;
-//���� � �����
+//???? ? ?????
     @Column(name = "PRICE")
     private double price;
 

@@ -1,12 +1,14 @@
 package ua.softserve.hotel.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import ua.softserve.hotel.dao.IUserDAO;
+import ua.softserve.hotel.dao.RoleDAO;
+
+import ua.softserve.hotel.dao.UserDAO;
 import ua.softserve.hotel.domain.User;
 /**
  *
@@ -38,9 +40,9 @@ public class UserService implements IUserService {
         this.iuserDAO = iuserDAO;
     }
 
-    /*РџРµСЂРµРґ РёСЃРїРѕР»РЅРµРЅРёРµРј РјРµС‚РѕРґР° РїРѕРјРµС‡РµРЅРЅРѕРіРѕ @Transactional Р°РЅРЅРѕС‚Р°С†РёРµР№ РЅР°С‡РёРЅР°РµС‚СЃСЏ
-    С‚СЂР°РЅР·Р°РєС†РёСЏ, РїРѕСЃР»Рµ РІС‹РїРѕР»РЅРµРЅРёСЏ РјРµС‚РѕРґР° С‚СЂР°РЅР·Р°РєС†РёСЏ РєРѕРјРјРёС‚РёС‚СЃСЏ, РїСЂРё РІС‹Р±СЂР°СЃС‹РІР°РЅРёРё
-    RuntimeException РѕС‚РєР°С‚С‹РІР°РµС‚СЃСЏ.
+    /*Перед исполнением метода помеченного @Transactional аннотацией начинается
+    транзакция, после выполнения метода транзакция коммитится, при выбрасывании
+    RuntimeException откатывается.
       */
     @Transactional
     public void addUser(User user) {
@@ -64,10 +66,20 @@ public class UserService implements IUserService {
     public User getUser(Long id) {
         return iuserDAO.getUser(id);
     }
+   @Transactional
+    public User getUserByUserName(String userName) {
+        return iuserDAO.getUserByUserName(userName);
+    }
 
     @Transactional
     public List<User> getAllUsers() {
         return iuserDAO.getAllUsers();
+    }
+
+    @Override
+    public String getUserNameFromSecurity() {
+        //throw new UnsupportedOperationException("Not supported yet.");
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
 }

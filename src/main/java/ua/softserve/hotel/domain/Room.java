@@ -19,15 +19,8 @@ public class Room implements Serializable {
     private int number;
 
     @ManyToOne
-    @JoinColumn(name = "NAME")
+    @JoinColumn(name = "ROOM_TYPE_ID")
     private RoomType roomType;
-
-    //�����, � ������� ��� ��������
-    //��� ���-�� ������ ������������ � ����������� �������� �� Order
-    //� � ������ �������
-    @Column(nullable = false, name = "ROOM_STATE")
-    private String roomState;
-
 
     public Long getId() {
         return id;
@@ -43,14 +36,6 @@ public class Room implements Serializable {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public String getRoomState() {
-        return roomState;
-    }
-
-    public void setRoomState(String roomState) {
-        this.roomState = roomState;
     }
 
     public RoomType getRoomType() {

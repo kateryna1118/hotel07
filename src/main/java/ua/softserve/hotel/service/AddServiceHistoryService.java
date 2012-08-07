@@ -22,6 +22,14 @@ public class AddServiceHistoryService implements IAddServiceHistoryService {
     @Autowired
     private AddServiceHistoryDAO addServiceHistoryDAO;
 
+    public AddServiceHistoryDAO getAddServiceHistoryDAO() {
+        return addServiceHistoryDAO;
+    }
+
+    public void setAddServiceHistoryDAO(AddServiceHistoryDAO addServiceHistoryDAO) {
+        this.addServiceHistoryDAO = addServiceHistoryDAO;
+    }
+
     @Transactional
     public void addAddServiceHistory(AddServiceHistory addServiceHistory) {
         addServiceHistory.setDatePrice(addServiceHistory.getAddService().getPrice());

@@ -11,5 +11,6 @@ public interface IUserDAO {
 	public void updateUser(User user);
 	public void removeUser(Long id);
 	public User getUser(Long id);
+        public User getUserByUserName(String userName);
 	public List<User> getAllUsers();
 }

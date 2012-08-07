@@ -18,4 +18,6 @@ public interface IRoomTypeDAO {
     public RoomType getRoomType(Long id);
 
     public List<RoomType> getAllRoomTypes();
+
+    public List<String> getAllRoomTypesNames();
 }

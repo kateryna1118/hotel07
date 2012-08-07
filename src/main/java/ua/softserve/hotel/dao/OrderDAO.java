@@ -49,7 +49,7 @@ public class OrderDAO implements IOrderDAO {
     @SuppressWarnings("unchecked")
     public List<HotelOrder> getAllOrders() {
         List<HotelOrder> orders = sessionFactory.getCurrentSession().
-                createQuery("from Orders").list();
+                createQuery("from HotelOrder").list();
         return orders;
     }
 }
