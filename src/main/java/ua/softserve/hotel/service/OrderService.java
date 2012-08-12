@@ -28,9 +28,9 @@ public class OrderService implements IOrderService {
     }
 
     @Transactional
-    public void addOrder(HotelOrder order) {
+    public Long addOrder(HotelOrder order) {
 
-        orderDAO.addOrder(order);
+        return orderDAO.addOrder(order);
     }
 
     @Transactional
@@ -53,5 +53,12 @@ public class OrderService implements IOrderService {
         return orderDAO.getAllOrders();
     }
 
-   
+//    @Transactional
+//    public List<HotelOrder> getOrdersById(Long id) {
+//        return orderDAO.getOrdersById(id);
+//    }
+//
+//    public List<HotelOrder> getOrdersById(HotelOrder order) {
+//        return orderDAO.getOrdersById(order);
+//    }
 }

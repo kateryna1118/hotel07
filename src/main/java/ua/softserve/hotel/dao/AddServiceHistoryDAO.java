@@ -24,14 +24,17 @@ public class AddServiceHistoryDAO implements IAddServiceHistoryDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public void addAddServiceHistory(AddServiceHistory addServiceHistory) {
-        sessionFactory.getCurrentSession().save(addServiceHistory);
+    @Override
+    public Long addAddServiceHistory(AddServiceHistory addServiceHistory) {
+        return (Long) sessionFactory.getCurrentSession().save(addServiceHistory);
     }
 
+    @Override
     public void updateAddServiceHistory(AddServiceHistory addServiceHistory) {
         sessionFactory.getCurrentSession().update(addServiceHistory);
     }
 
+    @Override
     public void removeAddServiceHistory(Long id) {
         AddServiceHistory toDelete = (AddServiceHistory) sessionFactory.getCurrentSession().
                 get(AddServiceHistory.class, id);
@@ -40,6 +43,7 @@ public class AddServiceHistoryDAO implements IAddServiceHistoryDAO {
         }
     }
 
+    @Override
     public AddServiceHistory getAddServiceHistory(Long id) {
         AddServiceHistory toReturn = (AddServiceHistory) sessionFactory.getCurrentSession().
                 get(AddServiceHistory.class, id);
@@ -54,6 +58,7 @@ public class AddServiceHistoryDAO implements IAddServiceHistoryDAO {
 //        return addServiceHistory;
    // }
  @SuppressWarnings("unchecked")
+    @Override
     public List<AddServiceHistory> getAllAddServiceHistories() {
         List<AddServiceHistory> addServiceHistories = sessionFactory.getCurrentSession().
                 createQuery("from AddServiceHistory").list();

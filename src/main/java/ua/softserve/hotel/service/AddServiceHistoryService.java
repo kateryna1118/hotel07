@@ -31,27 +31,33 @@ public class AddServiceHistoryService implements IAddServiceHistoryService {
     }
 
     @Transactional
-    public void addAddServiceHistory(AddServiceHistory addServiceHistory) {
-        addServiceHistory.setDatePrice(addServiceHistory.getAddService().getPrice());
-        addServiceHistoryDAO.addAddServiceHistory(addServiceHistory);
+    @Override
+    public Long addAddServiceHistory(AddServiceHistory addServiceHistory) {
+//        addServiceHistory.setDatePrice(addServiceHistory.getAddService().getPrice());
+
+        return addServiceHistoryDAO.addAddServiceHistory(addServiceHistory);
     }
 
     @Transactional
+    @Override
     public void updateAddServiceHistory(AddServiceHistory addServiceHistory) {
         addServiceHistoryDAO.updateAddServiceHistory(addServiceHistory);
     }
 
     @Transactional
+    @Override
     public void removeAddServiceHistory(Long id) {
         addServiceHistoryDAO.removeAddServiceHistory(id);
     }
 
     @Transactional
+    @Override
     public AddServiceHistory getAddServiceHistory(Long id) {
         return addServiceHistoryDAO.getAddServiceHistory(id);
     }
 
     @Transactional
+    @Override
     public List<AddServiceHistory> getAllAddServiceHistories() {
         return addServiceHistoryDAO.getAllAddServiceHistories();
     }

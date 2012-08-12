@@ -4,18 +4,23 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+   <!-- LIBS -->
+    <script src="css/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+   <!-- STYLES -->
+  
     <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
     <title>Ripario Hotel Group</title>
-    <meta name="description" content="Ripario Hotel" />
-    <meta name="keywords" content="hotel, ripario, egipet" />
     
-    <!-- STYLES -->
-    <link rel="stylesheet" href="css/style_3.css" type="text/css" media="all" />
+    <style>
+                            .menu li{float: left; font-size: 20px; margin: 10px;}
+				.es-carousel ul{
+					display:block;
+				}
+			</style>
     
-    <!-- LIBS -->
-    <script src="css/jquery-1.7.2.min.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -23,25 +28,82 @@
         <div class="contenthtml">
              <ul class="reset menu">
                
-                <li><a href="/user"/>Главная</a></li>
-                <li><a href="servis.jsp">Сервис</a></li>
-                <li><a href="contact.jsp">Контакты</a></li>
+                <li><a href="/user"/><h1>Главная<h1></a></li>
+                <li><a href="servis.jsp"><h1>Сервис<h1></a></li>
+                <li><a href="nomer.jsp"><h1>Номер<h1></a></li>
                
             </ul>
-            <div class="page">
+            <div style="clear: both;"></div>
+<head>
+        
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/style_2.css" />
+		<link rel="stylesheet" type="text/css" href="css/elastislide.css" />
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&v1' rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css' />
+		<noscript>
 
-                <h2>Standard Single</h2>
-                <h2>Standard Double (sh)</h2>
-                <h2>Standard Double (bath)</h2>
-                <h2>Standard Twin/Triple</h2>
-                <h2>Semi Suite</h2>
-                <h2>Duplex</h2>
-                <h2>Suite</h2>
+		</noscript>
+		<script id="img-wrapper-tmpl" type="text/x-jquery-tmpl">	
+			<div class="rg-image-wrapper">
+				{{if itemsCount > 1}}
+					<div class="rg-image-nav">
+						<a href="#" class="rg-image-nav-prev">Предыдущее изображение</a>
+						<a href="#" class="rg-image-nav-next">Следующее изображение</a>
+					</div>
+				{{/if}}
+				<div class="rg-image"></div>
+				<div class="rg-loading"></div>
+				<div class="rg-caption-wrapper">
+					
+				</div>
+			</div>
+		</script>
+    </head>
+    <body>
+		<div class="container">
+			<div class="header">
 
+				<div class="clr"></div>
+			</div><!-- header -->
             
+			<div class="content">
+				<div id="rg-gallery" class="rg-gallery">
+					<div class="rg-thumbs">
+						<!-- Elastislide Carousel Thumbnail Viewer -->
+						<div class="es-carousel-wrapper">
+							<div class="es-nav">
+								<span class="es-nav-prev">Предыдущее</span>
+								<span class="es-nav-next">Следующее</span>
             </div>
+							<div class="es-carousel">
+								<ul>
+									<li><a href="#"><img src="css/images/thumbs/1.png" data-large="css/images/1.png" alt="image01" data-description="From off a hill whose concave womb reworded" />Люкс</a></li>
+									<li><a href="#"><img src="css/images/thumbs/2.png" data-large="css/images/2.png" alt="image02" data-description="A plaintful story from a sistering vale" />Люкс</a></li>
+									<li><a href="#"><img src="css/images/thumbs/3.png" data-large="css/images/3.png" alt="image03" data-description="A plaintful story from a sistering vale" />Люкс</a></li>
+									<li><a href="#"><img src="css/images/thumbs/4.png" data-large="css/images/4.png" alt="image04" data-description="My spirits to attend this double voice accorded" />Люкс</a></li>
+									<li><a href="#"><img src="css/images/thumbs/5.png" data-large="css/images/5.png" alt="image05" data-description="My spirits to attend this double voice accorded" />Люкс</a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/6.png" data-large="css/images/6.png" alt="image06" data-description="My spirits to attend this double voice accorded" />Полулюкс</a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/19.png" data-large="css/images/19.png" alt="image19" data-description="My spirits to attend this double voice accorded" />Полулюкс</a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/16.png" data-large="css/images/16.png" alt="image16" data-description="My spirits to attend this double voice accorded" />Стандарт</a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/17.png" data-large="css/images/17.png" alt="image17" data-description="My spirits to attend this double voice accorded" />Стандарт</a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/18.png" data-large="css/images/18.png" alt="image18" data-description="My spirits to attend this double voice accorded" />Стандарт</a></li>
+                                                                        
+								</ul>
         </div>
     </div>
-    <div class="clr" style="margin-bottom: 50px; height: 50px;"></div>
+						<!-- End Elastislide Carousel Thumbnail Viewer -->
+					</div><!-- rg-thumbs -->
+				</div><!-- rg-gallery -->
+			</div><!-- content -->
+		</div><!-- container -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script type="text/javascript" src="css/jquery.tmpl.min.js"></script>
+		<script type="text/javascript" src="css/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="css/jquery.elastislide.js"></script>
+		<script type="text/javascript" src="css/gallery.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ import ua.softserve.hotel.domain.HotelOrder;
  */
 public interface IOrderService {
 
-    public void addOrder(HotelOrder order);
+    public Long addOrder(HotelOrder order);
 
     public void updateOrder(HotelOrder order);
 
@@ -19,6 +19,10 @@ public interface IOrderService {
     public HotelOrder getOrder(Long id);
 
     public List<HotelOrder> getAllOrders();
+
+//    public List<HotelOrder> getOrdersById(Long id);
+//
+//    public List<HotelOrder> getOrdersById(HotelOrder order);
 
 }
 

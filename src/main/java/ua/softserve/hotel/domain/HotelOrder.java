@@ -4,6 +4,7 @@ package ua.softserve.hotel.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -22,7 +23,7 @@ public class HotelOrder{
     private User user;
 
 //    @OneToMany(mappedBy="order")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order")//????????????
     private Set<AddServiceHistory> addServiceHistory = new HashSet<AddServiceHistory>();
 
     @ManyToOne

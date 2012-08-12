@@ -24,15 +24,18 @@ public class AddServiceDAO implements IAddServiceDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    @Override
     public void addAddService(AddService addService) {
         		sessionFactory.getCurrentSession().save(addService);
 
     }
 
+    @Override
     public void updateAddService(AddService addService) {
        sessionFactory.getCurrentSession().update(addService);
     }
 
+    @Override
     public void removeAddService(Long id) {
        AddService toDelete = (AddService) sessionFactory.getCurrentSession().
 				get(AddService.class, id);
@@ -41,6 +44,7 @@ public class AddServiceDAO implements IAddServiceDAO {
 		}
     }
 
+    @Override
     public AddService getAddService(Long id) {
        AddService toReturn = (AddService) sessionFactory.getCurrentSession().
 				get(AddService.class, id);
@@ -48,6 +52,7 @@ public class AddServiceDAO implements IAddServiceDAO {
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public List<AddService> getAllAddServices() {
        List<AddService> addServices = sessionFactory.getCurrentSession().
 				createQuery("from AddService").list();

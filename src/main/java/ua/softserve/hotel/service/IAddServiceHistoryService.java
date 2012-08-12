@@ -9,7 +9,7 @@ import ua.softserve.hotel.domain.AddServiceHistory;
  */
 public interface IAddServiceHistoryService {
 
-    public void addAddServiceHistory(AddServiceHistory addServiceHistory);
+    public Long addAddServiceHistory(AddServiceHistory addServiceHistory);
 
     public void updateAddServiceHistory(AddServiceHistory addServiceHistory);
 

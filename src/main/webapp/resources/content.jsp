@@ -30,7 +30,7 @@
                
                 <li><a href="/user"/><h1>Главная<h1></a></li>
                 <li><a href="servis.jsp"><h1>Сервис<h1></a></li>
-                <li><a href="nomer.jsp"><h1>Номер<h1></a></li>
+                <li><a href="nomer.jsp"><h1>Номера<h1></a></li>
                 
             </ul>
             <div style="clear: both;"></div>
@@ -85,7 +85,17 @@
 									<li><a href="#"><img src="css/images/thumbs/2.png" data-large="css/images/2.png" alt="image02" data-description="A plaintful story from a sistering vale" /></a></li>
 									<li><a href="#"><img src="css/images/thumbs/3.png" data-large="css/images/3.png" alt="image03" data-description="A plaintful story from a sistering vale" /></a></li>
 									<li><a href="#"><img src="css/images/thumbs/4.png" data-large="css/images/4.png" alt="image04" data-description="My spirits to attend this double voice accorded" /></a></li>
-									
+									<li><a href="#"><img src="css/images/thumbs/5.png" data-large="css/images/5.png" alt="image05" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/6.png" data-large="css/images/6.png" alt="image06" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/7.png" data-large="css/images/7.png" alt="image07" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/8.png" data-large="css/images/8.png" alt="image08" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/9.png" data-large="css/images/9.png" alt="image09" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/10.png" data-large="css/images/10.png" alt="image10" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/11.png" data-large="css/images/11.png" alt="image11" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/12.png" data-large="css/images/12.png" alt="image12" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/13.png" data-large="css/images/13.png" alt="image13" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/14.png" data-large="css/images/14.png" alt="image14" data-description="My spirits to attend this double voice accorded" /></a></li>
+                                                                        <li><a href="#"><img src="css/images/thumbs/15.png" data-large="css/images/15.png" alt="image15" data-description="My spirits to attend this double voice accorded" /></a></li>
 								</ul>
 							</div>
 						</div>

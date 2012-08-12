@@ -1,10 +1,14 @@
 package ua.softserve.hotel.dao;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ua.softserve.hotel.domain.HotelOrder;
+import ua.softserve.hotel.domain.Room;
 
 /**
  *
@@ -24,8 +28,8 @@ public class OrderDAO implements IOrderDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public void addOrder(HotelOrder order) {
-        sessionFactory.getCurrentSession().save(order);
+    public Long addOrder(HotelOrder order) {
+        return (Long) sessionFactory.getCurrentSession().save(order);
     }
 
     public void updateOrder(HotelOrder order) {
@@ -52,4 +56,32 @@ public class OrderDAO implements IOrderDAO {
                 createQuery("from HotelOrder").list();
         return orders;
     }
+//    public List<HotelOrder> getOrdersById(HotelOrder order) {
+//
+//        List<HotelOrder> getOrdersById = new ArrayList<HotelOrder>();
+//        Query q = sessionFactory.getCurrentSession().createQuery("from HotelOrder where ORDER_ID = :ORDER_ID");
+//        q.setParameter("ORDER_ID", order.getId());
+//        getOrdersById = q.list();
+//
+//        return getOrdersById;
+//    }
+
+//    public HotelOrder getLastOrder() {
+//          LinkedList<HotelOrder> allOrders=(LinkedList<HotelOrder>) getAllOrders();
+//        HotelOrder toReturn = allOrders.getLast();
+//        return toReturn;
+//    }
+
+//    public List<HotelOrder> getOrdersById(Long id) {
+//        List<HotelOrder> allOrders = getAllOrders();
+//
+//        List<HotelOrder> ordersById = new ArrayList<HotelOrder>();
+//
+//        for (HotelOrder order : allOrders) {
+//            if (id == order.getId());
+//            ordersById.add(order);
+//
+//        }
+//        return ordersById;
+//    }
 }

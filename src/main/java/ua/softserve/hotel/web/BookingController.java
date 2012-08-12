@@ -1,19 +1,18 @@
 package ua.softserve.hotel.web;
 
 import java.util.Map;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.*;
 import ua.softserve.hotel.domain.HotelOrder;
+import ua.softserve.hotel.domain.Person;
 import ua.softserve.hotel.domain.RoomType;
+import ua.softserve.hotel.domain.User;
 import ua.softserve.hotel.service.IOrderService;
 import ua.softserve.hotel.service.IRoomTypeService;
 import ua.softserve.hotel.service.IUserService;
@@ -33,6 +32,7 @@ public class BookingController {
     public IOrderService getIorderService() {
         return iorderService;
     }
+
     public void setIorderService(IOrderService iorderService) {
         this.iorderService = iorderService;
     }
@@ -43,6 +43,7 @@ public class BookingController {
     public IRoomTypeService getIRoomTypeService() {
         return iRoomTypeService;
     }
+
     public void setIRoomTypeService(IRoomTypeService IRoomTypeService) {
         this.iRoomTypeService = IRoomTypeService;
     }
@@ -66,15 +67,12 @@ public class BookingController {
         this.iUserService = iUserService;
     }
 
-
     @RequestMapping(value = "showBookingForm",method = RequestMethod.GET)
 	public String showBookingForm(ModelMap model) {
 
 		HotelOrder hotelOrder = new HotelOrder();
 		model.addAttribute(hotelOrder);
 
-//        RoomType roomType=new RoomType();
-//         model.addAttribute(roomType);
          model.addAttribute("roomTypes", iRoomTypeService.getAllRoomTypes());
 
 
@@ -84,19 +82,6 @@ public class BookingController {
 		return "booking";
 	}
 
-//    @ModelAttribute("hotelOrder")
-//    public HotelOrder newHotelOrder() {
-//        return new HotelOrder();
-//    }
-
-//    @RequestMapping(value="/input",method = RequestMethod.GET)
-//	public String input(Model model){
-//       model.addAttribute("count", promosService.countPromos());
-//       model.addAttribute("rentPromo", new RentPromo());
-//       model.addAttribute("rentTypes", RentType.getRentTypes());
-//	   return "input";
-//	}
-
     @RequestMapping(value = "add_Order", method = RequestMethod.POST)
     public String onSubmit(@ModelAttribute("hotelOrder") HotelOrder hotelOrder, BindingResult result, ModelMap model, HttpSession session) {
         long roomTypeId = hotelOrder.getRoomType().getId();
@@ -105,8 +90,8 @@ public class BookingController {
         hotelOrder.setRoomType(newRoomType);
         hotelOrder.setUser(iUserService.getUserByUserName(session.getAttribute("userName").toString()));
 
-		iorderService.addOrder(hotelOrder);
-
+        //iorderService.addOrder(hotelOrder);
+        session.setAttribute("orderId", iorderService.addOrder(hotelOrder));
 		return "redirect:/booking";
 	}
 
@@ -118,35 +103,32 @@ public class BookingController {
         map.put("hotelOrder", hotelOrder);
         map.put("getAllOrders", iorderService.getAllOrders());
 
-        map.put("getOrder",iorderService.getOrder(hotelOrder.getId()));
+
+        try {
+            map.put("getOrder", iorderService.getOrder((Long) session.getAttribute("orderId")));
+        } catch (Exception e) {
+        }
+
+        try {
+            map.put("getOrderId", session.getAttribute("orderId"));
+        } catch (Exception e) {
+        }
 
         map.put("getAllRoomTypes", iRoomTypeService.getAllRoomTypes());
-
-//        map.put("theName", iUserService.getUserNameFromSecurity());
+//        try {
+//            map.put("deleteOrder", iorderService.removeOrder((Long) session.getAttribute("orderId")));
+//        } catch (Exception e) {
+//        }
         session.setAttribute("userName", iUserService.getUserNameFromSecurity());
 
         return "booking";
     }
 
-// @RequestMapping(value = "getUserNameFromSecurity", method = RequestMethod.GET)
-//    public String getUserNameFromSecurity() {
-//           String userName=(iorderService.getUserNameFromSecurity());
-//          // User user=iUserService.getUserByUserName(userName);
-//        return userName;
-//    }
-//    @RequestMapping(value = "/booking/add", method = RequestMethod.GET)
-//    public String addHotelOrder(@ModelAttribute("HotelOrder") HotelOrder hotelOrder,
-//            BindingResult result) {
-//        iorderService.addOrder(hotelOrder);
-//        return "redirect:/user";
-//    }
+//    @RequestMapping(value = "/deleteOrder/{orderId}", method = RequestMethod.GET)
+//    public String getUser(@PathVariable("orderId") Long orderId) {
 //
-
-//     public IUserService getiUserService() {
-//        return iUserService;
-//    }
+//        iorderService.removeOrder(orderId);
 //
-//    public void setiUserService(IUserService iUserService) {
-//        this.iUserService = iUserService;
+//        return "redirect:/booking";
 //    }
 }

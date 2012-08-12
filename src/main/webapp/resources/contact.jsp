@@ -30,14 +30,13 @@
             </ul>
             <div class="page">
 
-                <h1>Телефоны: </h1>
-                
-                <h2>+38 (067) 917-10-15</h2>
-                <h2>+38 (093) 901-88-87</h2>
-                <h1>e-mail: </h1>
-                <h1>reception@praguehotel.com.ua </h1>
-               
+                <h1 style="color: white">Телефоны: </h1>
 
+                <h2 style="color: white">+38 (067) 917-10-15</h2>
+                <h2 style="color: white">+38 (093) 901-88-87</h2>
+                <h1 style="color: white">e-mail: </h1>
+                <h1 style="color: white">ourhotel@hotel.com.ua </h1>
+                <img src="css/images/21.png" width="300" height="150" alt="Сайт о заработке в интернете"> 
             
             </div>
         </div>

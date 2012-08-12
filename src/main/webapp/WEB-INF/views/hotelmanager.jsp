@@ -21,11 +21,15 @@
     <div class="borders">
         <div class="content">
             <h1><div class="logo"><a href="/" title="Наш отель!!!"></a></div></h1>
+            <a href="<c:url value="./logout" />">
+            <spring:message code="label.homePage" />
+        </a>
             <ul class="reset menu">
                
-                 <li><a href="/user"/>Главная</a></li>
-                 <li><a href="/allusers"/>Отчет о клиентах</a></li>
-                 <li><a href="/allorders"/>Отчет о заказах</a></li>
+                 <li><a href="./user"/>Главная</a></li>
+                 <li><a href="./allusers"/>Отчет о клиентах</a></li>
+                 <li><a href="./allorders"/>Отчет о заказах</a></li>
+                 <li><a href="./allservice"/>Отчет о сервисах</a></li>
                 
             </ul>
     <body>

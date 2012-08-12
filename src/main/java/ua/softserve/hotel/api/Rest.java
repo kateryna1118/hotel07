@@ -91,7 +91,6 @@ public class Rest {
 	    public JsonElement serialize(AddServiceHistory service, Type type, JsonSerializationContext jsc) {	    	
 	        JsonObject jsonObject = new JsonObject();
 	        jsonObject.addProperty("message_id", service.getAmount());
-	        jsonObject.addProperty("message", service.getDatePrice());
 	        jsonObject.addProperty("id", service.getId());
 	        jsonObject.add("addService", new Gson().toJsonTree(service.getAddService()));
 //	        jsonObject.addProperty("message_id", service.getOpperationDate());
@@ -112,7 +111,7 @@ public class Rest {
 			iAddServiceHistoryService.getAllAddServiceHistories()) {
 			
 			if(service.getUser().getRole().getName().equals(role) &&
-					service.isClientPaid() == null) {
+					service.getClientPaid() == null) {
 				services.add(service);
 			}
 		}

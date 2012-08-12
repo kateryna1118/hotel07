@@ -21,11 +21,64 @@ import ua.softserve.hotel.service.*;
  */
 @Controller
 @RequestMapping("/servisadd")
-//@SessionAttributes("hotelOrder")
 public class AddServisHistoryController {
 
      @Autowired
     private IAddServiceHistoryService iAddServiceHistoryService;
+    @Autowired
+    private IOrderService iorderService;
+    @Autowired
+    private IRoleService iroleService;
+    @Autowired
+    private IUserService iuserService;
+    @Autowired
+    private IAddServiseService iAddServiseService;
+
+    @RequestMapping(value = "add_Service", method = RequestMethod.POST)
+    public String onSubmit(@ModelAttribute("addServiceHistory") AddServiceHistory addServiceHistory, BindingResult result, ModelMap model, HttpSession session) {
+
+        //addService
+        long addServiceId = addServiceHistory.getAddService().getId();
+        AddService newAddService = iAddServiseService.getAddService(addServiceId);
+        addServiceHistory.setAddService(newAddService);
+
+        //hotelOrder
+        long orderId = addServiceHistory.getOrder().getId();
+        HotelOrder newHotelOrder = iorderService.getOrder(orderId);
+        addServiceHistory.setOrder(newHotelOrder);
+
+        //user
+        long userId = addServiceHistory.getUser().getId();
+        User newUser = iuserService.getUser(userId);
+        addServiceHistory.setUser(newUser);
+
+        session.setAttribute("addServiceHistoryId", iAddServiceHistoryService.addAddServiceHistory(addServiceHistory));
+        //iAddServiceHistoryService.addAddServiceHistory(addServiceHistory); //hotelOrder.setUser(iUserService.getUserByUserName(session.getAttribute("userName").toString()));
+
+        return "redirect:/servisadd";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String getAllAddServiceHistories(Map<String, Object> map, HttpSession session) {
+
+        AddServiceHistory addServiceHistory = new AddServiceHistory();
+
+        map.put("addServiceHistory", addServiceHistory);
+        map.put("getAllAddServiceHistories", iAddServiceHistoryService.getAllAddServiceHistories());
+        map.put("serviceList", iAddServiseService.getAllAddServices());
+        map.put("orderList", iorderService.getAllOrders());
+        map.put("userList", iuserService.getAllUsers());
+//        map.put("getRoleListFSH", iroleService.getRolesForAddServiseHistory());
+//        map.put("usersListFSH", iuserService.getAllUsersFSH());
+
+        try {
+            map.put("getAddServiceHistoryId", session.getAttribute("addServiceHistoryId"));
+        } catch (Exception e) {
+        }
+
+        return "servisadd";
+    }
+    //setters & getters=================================================
 
     public IAddServiceHistoryService getiAddServiceHistoryService() {
         return iAddServiceHistoryService;
@@ -35,9 +88,6 @@ public class AddServisHistoryController {
         this.iAddServiceHistoryService = iAddServiceHistoryService;
     }
     
-    @Autowired
-    private IOrderService iorderService;
-
     public IOrderService getIorderService() {
         return iorderService;
     }
@@ -46,8 +96,13 @@ public class AddServisHistoryController {
         this.iorderService = iorderService;
     }
     
-    @Autowired
-    private IAddServiseService iAddServiseService;
+    public IUserService getIuserService() {
+        return iuserService;
+    }
+
+    public void setIuserService(IUserService iuserService) {
+        this.iuserService = iuserService;
+    }
 
     public IAddServiseService getiAddServiseService() {
         return iAddServiseService;
@@ -57,27 +112,11 @@ public class AddServisHistoryController {
         this.iAddServiseService = iAddServiseService;
     }
 
-    @RequestMapping(value = "showHistoryForm",method = RequestMethod.GET)
-    public String showHistoryForm(ModelMap model) {
-
-        HotelOrder hotelOrder = new HotelOrder();
-        model.addAttribute(hotelOrder);
-        
-        AddServiceHistory addServiceHistory = new AddServiceHistory();
-        model.addAttribute(addServiceHistory);
-        
-        
-        AddService addService = new AddService();
-        model.addAttribute(addService);
-        model.addAttribute("addService", iAddServiseService.getAddService(addService.getId()));
-        return "servisadd";
+    public IRoleService getIroleService() {
+        return iroleService;
     }
     
-        @RequestMapping(value = "add_Service", method = RequestMethod.POST)
-        public String onSubmit(@ModelAttribute("addServiceHistory") AddServiceHistory addServiceHistory, BindingResult result, ModelMap model, HttpSession session) {
-        long serviceTypeId = addServiceHistory.getAddService().getId();
-
-        return "redirect:/servisadd";
+    public void setIroleService(IRoleService iroleService) {
+        this.iroleService = iroleService;
     }
-    
 }

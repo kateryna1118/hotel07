@@ -11,7 +11,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
         <intercept-url pattern="/person*" access="ROLE_USER,ROLE_ANONYMOUS" />
         <intercept-url pattern="/index*" access="ROLE_USER,ROLE_ANONYMOUS" />
         <intercept-url pattern="/add*" access="ROLE_USER" />
-        <intercept-url pattern="/delete/*" access="ROLE_ADMIN,ROLE_USER" />
+        <intercept-url pattern="/delete_order/*" access="ROLE_ADMIN,ROLE_USER" />
 
         <intercept-url pattern="/user_add*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/delete_user/*" access="ROLE_ADMIN,ROLE_USER" />

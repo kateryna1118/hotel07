@@ -19,26 +19,31 @@ public class AddServiceService implements IAddServiseService {
     private AddServiceDAO addServiceDAO;
 
     @Transactional
+    @Override
     public void addAddService(AddService addService) {
         addServiceDAO.addAddService(addService);
     }
 
     @Transactional
+    @Override
     public void updateAddService(AddService AddService) {
         addServiceDAO.updateAddService(AddService);
     }
 
     @Transactional
+    @Override
     public void removeAddService(Long id) {
         addServiceDAO.removeAddService(id);
     }
 
     @Transactional
+    @Override
     public AddService getAddService(Long id) {
         return addServiceDAO.getAddService(id);
     }
 
     @Transactional
+    @Override
     public List<AddService> getAllAddServices() {
         return addServiceDAO.getAllAddServices();
     }

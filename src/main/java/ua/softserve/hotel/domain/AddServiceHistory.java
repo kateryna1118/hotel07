@@ -1,54 +1,47 @@
-
 package ua.softserve.hotel.domain;
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "ADD_SERVICE_HISTORY")
 public class AddServiceHistory implements Serializable{
+
     @Id
     @Column(name = "ADD_SERVICE_HISTORY_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(optional=false, cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ADD_SERVICE_ID")
     private AddService addService;
 
-
-    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private HotelOrder order;
 
-
-    //���������� ������ ��� ������
-    @Column(name="AMOUNT", nullable=false)
-    private double amount;
-
-    //���� �� ������� ��� ������� �� ���� ��������
-    //���� �������� ��� ������!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //������� �� AddService ������ �.�. ��� ������� ����
-    @Column(name = "DATE_PRICE")
-    private double datePrice;
-
-    //���� �������� ������
-    @Column(name = "OPERATION_DATE")
-    @Temporal( value = TemporalType.TIMESTAMP )
-    private Date operationDate;
-
-    //������ ������ ��� ���
-    @Column(name = "CLIENT_PAID")
-    private Boolean ClientPaid;
-
-    //��� ������/��������������� ��� ������
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @Column(name = "OPERATION_DATE")
+    @Temporal( value = TemporalType.TIMESTAMP )
 
+    private Date operationDate;
+    @Column(name = "CLIENT_PAID")
+
+    private Boolean clientPaid;
+
+    @Column(name = "AMOUNT")
+    //, nullable=false
+    private int amount;
+
+//    @Column(name = "DATE_PRICE")
+//    private double datePrice;
+
+
+    //getters &setters=========================================================
     public HotelOrder getOrder(){
 	return order;
     }
@@ -65,30 +58,21 @@ public class AddServiceHistory implements Serializable{
         this.addService = addService;
     }
 
-    public Boolean isClientPaid() {
-        return ClientPaid;
+    public Boolean getClientPaid() {
+        return clientPaid;
     }
 
-    public void setClientPaid(Boolean ClientPaid) {
-        this.ClientPaid = ClientPaid;
+    public void setClientPaid(Boolean clientPaid) {
+        this.clientPaid = clientPaid;
     }
 
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
-
-    public double getDatePrice() {
-        return datePrice;
-    }
-
-    public void setDatePrice(double datePrice) {
-        this.datePrice = datePrice;
-    }
-
     public Long getId() {
         return id;
     }
@@ -97,12 +81,12 @@ public class AddServiceHistory implements Serializable{
         this.id = id;
     }
 
-    public Date getOpperationDate() {
+    public Date getOperationDate() {
         return operationDate;
     }
 
-    public void setOpperationDate(Date opperationDate) {
-        this.operationDate = opperationDate;
+    public void setOperationDate(Date operationDate) {
+        this.operationDate = operationDate;
     }
 
     public User getUser() {
@@ -113,9 +97,12 @@ public class AddServiceHistory implements Serializable{
         this.user = user;
     }
 
-
-
-
-
+//    public double getDatePrice() {
+//        return datePrice;
+//    }
+//
+//    public void setDatePrice(double datePrice) {
+//        this.datePrice = datePrice;
+//    }
 
 }

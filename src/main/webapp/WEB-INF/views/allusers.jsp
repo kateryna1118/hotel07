@@ -10,41 +10,38 @@
         <title><spring:message code="label.title" /></title>
          <script src="resources/css/tablesearch.js" type="text/javascript"></script>
          <!-- STYLES -->
-   
 <link rel="stylesheet" href="resources/css/style_3.css" type="text/css" media="all" />
     
     <!-- LIBS -->
     <script src="resources/css/jquery-1.7.2.min.js" type="text/javascript"></script>
     </head>
-  
-
         <body>
     <div class="borders">
         <div class="content">
             <h1><div class="logo"><a href="/" title="Наш отель!!!"></a></div></h1>
+            <a href="<c:url value="./logout" />">
+            <spring:message code="label.homePage" />
+        </a>
             <ul class="reset menu">
-               
-                <li><a href="resources/content.jsp"/>Галлерея</a></li>
+                <li><a href="/user"/>Главная</a></li>
                 <li><a href="/hotelmanager">Менеджер</a></li>
                 <li><a href="/admin">Администратор</a></li>
                 
             </ul>
     </body>
-
  <body>
-        <c:if test="${!empty getAllUsers}">
-            
 
     <div class="borders">
-        <div class="contenthtml">
+        <div class="contenthtml" onclick="tableSearch.init();">
             <div class="page">
+                <c:if test="${!empty getAllUsers}">
+               
+            <legend><h3 style="color:white">Поиск клиентов</h3></legend>
                 <div class="search">
-            <legend><h3>Поиск клиентов</h3></legend>
             <input type="text" size="30" maxlength="100" value="" id="textBoxSearch" onkeyup="tableSearch.runSearch();" />
+           
         </div>
-           <fieldset onclick="tableSearch.init();">
               
-           </fieldset>
             <table class="table table-bordered">
               
             <thead>   
@@ -74,11 +71,12 @@
                      </tbody>  
             </table>
       </div>  
+ </c:if>
    </div> 
 </div>
+
 <div class="clr" style="margin-bottom: 50px; height: 50px;"></div>
          
- </c:if>
 
     </body>
 </html>

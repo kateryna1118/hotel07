@@ -261,7 +261,7 @@
             <scope>test</scope>
         </dependency>
 
-		<dependency>
+<dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
             <version>2.3.0</version>
@@ -281,7 +281,7 @@
         </dependency>
     </dependencies>
 
-    <repositories>
+<repositories>
         <!-- Jersey -->
         <!-- repository>
 			<id>maven2-repository.java.net</id>
