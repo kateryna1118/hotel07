@@ -13,7 +13,7 @@
         <org.springframework.roo-version>1.0.2.RELEASE</org.springframework.roo-version>
         <org.aspectj-version>1.6.9</org.aspectj-version>
         <org.slf4j-version>1.5.10</org.slf4j-version>
-        <org.jboss.resteasy-version>2.2.1.GA</org.jboss.resteasy-version>
+        <org.jboss.resteasy-version>3.0.11.Final</org.jboss.resteasy-version>
     </properties>
     <dependencies>
 	    <!--  Gson: Java to Json conversion -->
